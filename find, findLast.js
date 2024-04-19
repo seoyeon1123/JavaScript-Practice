@@ -33,3 +33,12 @@ console.log(
   arr10.find(isCheapFruit).name,
   arr10.findLast(isCheapFruit).name
 )
+
+//some, every 어떤 요소가 기준을 충족하는지 확인한다
+// some -> 요소들 중 하나라도 true를 반환하는지
+// every -> 모든 요소가 true를 반환하는가 여부를 반환
+
+const isPlant = ({cat}) => {
+  return ['과일','채소'].includes(cat);
+}
+

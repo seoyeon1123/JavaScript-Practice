@@ -31,3 +31,4 @@ function findFirstCapital(str){
 
 // 활용예
 findFirstCapital("helloWorld"); // W
+
