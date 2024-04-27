@@ -32,3 +32,4 @@ const jobCounts = users.sort((a,b) => a.job > b.job ? 1: -1)
   return acc;
 }, {});
 console.log(jobCounts);
+

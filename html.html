@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="userForm">
+      <h2>User Information Form</h2>
+      <form id="userInfoForm">
+          <div>
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name">
+          </div>
+          <div>
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email">
+          </div>
+          <button type="submit">Submit</button>
+      </form>
+  </div>
+
+  <div id="responseMessage"></div>
+
+  <script>
+    const userForm = document.getElementById('userInfoForm');
+    const responseMessage = document.getElementById('responseMessage');
+
+    userForm.addEventListener('submit', async(event)=>{
+      event.preventDefault();
+      //브라우저가 기본적으로 수행하는 동작(페이지 새로고침)을 막는다. 
+
+      const formData = new FormData(userForm);
+
+      try{
+        const response = await fetch('http://127.0.0.1:5500/html.html',{
+          method: 'POST',
+          body : formData
+        });
+
+        if(!response.ok){
+          throw new Error('Failed to submit user data!');
+        }
+
+        const responseData = await response.json();
+        responseMessage.textContent = responseData.message;
+      } catch (error){
+        console.error('Error submitting user data:', error);
+        responseMessage.textContent = 'Error occurred while submitting user data';
+      }
+    })
+  </script>
+</body>
+</html>
