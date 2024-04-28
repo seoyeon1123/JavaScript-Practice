@@ -1,0 +1,1 @@
+document.querySelector('p').innerText = '텍스트 변경 완료';
